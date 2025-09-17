@@ -4,8 +4,96 @@
   <meta charset="UTF-8">
   <title>My Personal Site</title>
   <link rel="stylesheet" href="style.css">
+  <!-- FontAwesome for skill icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
-  <!-- Add your HTML content here -->
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <!-- You can replace the image source with your own -->
+  <img src="img/hero-bg.jpg" alt="Hero background" class="hero-bg">
+  <!-- 1s and 0s animation overlay -->
+  <div class="binary-animation"></div>
+  <div class="hero-content">
+  <img src="img/Zarif.JPG" alt="My photo" class="profile-pic">
+  <h1>Hello, I'm Zarif Kamal</h1>
+  <p>Welcome to my portfolio website!</p>
+    </div>
+  </section>
+
+  <!-- Bio/About Me Section -->
+  <section class="about" id="about">
+    <h2>About Me</h2>
+    <p>
+      Hi, I’m Zarif Khan — a student and aspiring entrepreneur with a passion for tech, design, and creativity.<br>
+      I enjoy building projects that merge innovation with real-world impact.<br>
+      Driven by curiosity, I’m always learning and exploring new opportunities.<br>
+      My work reflects a balance of academic focus and creative vision.<br>
+      I aim to leave a lasting legacy by inspiring and empowering others.
+    </p>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="skills" id="skills">
+    <h2>My Skills</h2>
+    <ul>
+      <li data-tooltip="HyperText Markup Language"><i class="fa-brands fa-html5" style="color:#e34c26;"></i> HTML</li>
+      <li data-tooltip="Cascading Style Sheets"><i class="fa-brands fa-css3-alt" style="color:#2965f1;"></i> CSS</li>
+      <li data-tooltip="JavaScript Programming"><i class="fa-brands fa-js" style="color:#f7df1e;"></i> JavaScript (learning soon!)</li>
+    </ul>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="projects" id="projects">
+    <h2>Projects</h2>
+    <p>Check back soon for my latest web development projects!</p>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+  <h2>Contact Me</h2>
+  <p>Email: <a href="mailto:zarifkamal4@gmail.com">zarifkamal4@gmail.com</a></p>
+  </section>
+<script>
+// Touch feedback for navbar links and About Me section
+document.addEventListener('DOMContentLoaded', function() {
+  // Navbar links
+  var navLinks = document.querySelectorAll('.navbar a');
+  navLinks.forEach(function(link) {
+    link.addEventListener('touchstart', function() {
+      link.classList.add('touch-active');
+    });
+    link.addEventListener('touchend', function() {
+      setTimeout(function() {
+        link.classList.remove('touch-active');
+      }, 150);
+    });
+  });
+  // About section
+  var about = document.querySelector('.about');
+  if (about) {
+    about.addEventListener('touchstart', function() {
+      about.classList.add('touch-active');
+    });
+    about.addEventListener('touchend', function() {
+      setTimeout(function() {
+        about.classList.remove('touch-active');
+      }, 150);
+    });
+  }
+});
+</script>
+</body>
+</html>
 </body>
 </html>
