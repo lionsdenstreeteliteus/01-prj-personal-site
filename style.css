@@ -1,1 +1,230 @@
+/* 1s and 0s animation overlay for hero */
+.binary-animation {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	z-index: 1;
+	opacity: 0.18;
+	font-family: 'Courier New', Courier, monospace;
+	color: #00ffcc;
+	font-size: 22px;
+	white-space: pre;
+	animation: binary-move 6s linear infinite;
+	background: repeating-linear-gradient(
+		to bottom,
+		transparent 0px, transparent 18px,
+		#00ffcc22 18px, #00ffcc22 20px
+	);
+}
+
+@keyframes binary-move {
+	0% { background-position-y: 0; }
+	100% { background-position-y: 40px; }
+}
+
+/* Fill the overlay with 1s and 0s using ::before */
+.binary-animation::before {
+	content: '010101010101010101010101010101010101010101010101010101010101\A1010101010101010101010101010101010101010101010101010101010101\A010101010101010101010101010101010101010101010101010101010101\A1010101010101010101010101010101010101010101010101010101010101';
+	display: block;
+	line-height: 1.2;
+}
+/* Navigation bar styles */
+.navbar {
+	background: #001f4d; /* navy blue */
+	padding: 0;
+	margin: 0;
+	position: sticky;
+	top: 0;
+	z-index: 100;
+}
+.navbar ul {
+	list-style: none;
+	margin: 0;
+	padding: 0 20px;
+	display: flex;
+	justify-content: center;
+	gap: 32px;
+}
+.navbar li {
+	display: inline;
+}
+.navbar a {
+	display: inline-block;
+	color: #fff;
+	text-decoration: none;
+	padding: 18px 0;
+	font-size: 1.1em;
+	transition: color 0.2s;
+}
+.navbar a:hover {
+	color: #ffd700; /* gold on hover for contrast */
+}
+
+/* Touch feedback for navbar links */
+.navbar a:active, .navbar a.touch-active {
+	background: #f5f5dc !important; /* beige */
+	color: #001f4d !important;
+	transition: none;
+}
+
+/* Responsive About Me section */
+.about {
+	transition: background 0.2s;
+}
+.about.touch-active {
+	background: #f5f5dc !important;
+}
+
+@media (max-width: 600px) {
+	section {
+		padding: 24px 8px;
+	}
+	.skills ul {
+		flex-direction: column;
+		gap: 10px;
+	}
+	.navbar ul {
+		gap: 12px;
+		font-size: 0.98em;
+	}
+	.profile-pic {
+		width: 90px;
+		height: 90px;
+	}
+}
+/* General styles */
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	background: #f5f5dc; /* beige */
+	color: #222;
+}
+
+section {
+	padding: 40px 20px;
+	max-width: 800px;
+	margin: 0 auto 30px auto;
+	background: #fff;
+	border-radius: 8px;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+/* Hero section styles */
+.hero {
+	position: relative;
+	text-align: center;
+	padding: 0;
+	margin-bottom: 40px;
+	background: #222;
+	color: #fff;
+	border-radius: 0 0 16px 16px;
+	overflow: hidden;
+	min-height: 340px; /* Increase height for more space */
+}
+.hero-bg {
+	width: 100%;
+	height: 280px; /* Increase background height */
+	object-fit: cover;
+	display: block;
+	opacity: 0.5;
+}
+.hero-content {
+	position: absolute;
+	top: 55%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+.profile-pic {
+		width: 140px; /* Make the profile picture larger */
+		height: 140px;
+		border-radius: 50%;
+		border: 4px solid #fff;
+		margin-bottom: 16px;
+		background: #eee;
+		box-shadow: 0 4px 16px rgba(0,0,0,0.10); /* Add a subtle shadow */
+		object-fit: cover; /* Ensure the image fills the circle */
+		transition: transform 0.2s;
+	}
+
+	/* Add a hover effect for interactivity */
+	.profile-pic:hover {
+		transform: scale(1.05);
+		box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+/* About section */
+.about h2 {
+	margin-top: 0;
+}
+
+/* Skills section */
+.skills ul {
+	list-style: none;
+	padding: 0;
+	display: flex;
+	gap: 20px;
+	justify-content: center;
+}
+.skills li {
+	background: #e0e7ff;
+	color: #222;
+	padding: 8px 16px;
+	border-radius: 16px;
+	font-weight: bold;
+	position: relative;
+	cursor: pointer;
+	transition: transform 0.15s;
+}
+
+/* Pop-up (tooltip) effect for skills */
+.skills li::after {
+	content: attr(data-tooltip);
+	position: absolute;
+	left: 50%;
+	bottom: 120%;
+	transform: translateX(-50%);
+	background: #001f4d;
+	color: #fff;
+	padding: 6px 12px;
+	border-radius: 6px;
+	white-space: nowrap;
+	opacity: 0;
+	pointer-events: none;
+	font-size: 0.95em;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+	transition: opacity 0.2s, bottom 0.2s;
+	z-index: 10;
+}
+.skills li:hover::after, .skills li:focus::after {
+	opacity: 1;
+	bottom: 140%;
+}
+.skills li:hover, .skills li:focus {
+	transform: scale(1.08);
+	z-index: 2;
+}
+
+/* Projects section */
+.projects p {
+	color: #666;
+}
+.projects p {
+	color: #666;
+}
+
+/* Contact section */
+.contact a {
+	color: #2563eb;
+	text-decoration: none;
+}
+.contact a:hover {
+	text-decoration: underline;
+}
 /* Add you CSS here */
